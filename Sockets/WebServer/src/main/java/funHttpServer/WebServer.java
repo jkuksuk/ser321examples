@@ -237,14 +237,32 @@ class WebServer {
           query_pairs = splitQuery(request.replace("github?", ""));
           String json = fetchURL("https://api.github.com/" + query_pairs.get("query"));
           System.out.println(json);
-
-          builder.append("Check the todos mentioned in the Java source file");
+          
           // TODO: Parse the JSON returned by your fetch and create an appropriate
           // response
           // and list the owner name, owner id and name of the public repo on your webpage, e.g.
           // amehlhase, 46384989 -> memoranda
           // amehlhase, 46384989 -> ser316examples
           // amehlhase, 46384989 -> test316
+        JSONParser jsonParser = new JSONParser();
+         JSONObject jsonObject = (JSONObject) jsonParser.parse(json));
+         String owner = (String) jsonObject.get("login");
+         String id = (String) jsonObject.get("id");
+         String name = (String) jsonObject.get("name");
+         System.out.println("Contents of the JSON are: ");
+         System.out.println("ID :"+id);
+         System.out.println("First name: "+first_name);
+         System.out.println("Last name: "+last_name);
+         System.out.println("Date of birth: "+date_of_birth);
+         System.out.println("Place of birth: "+place_of_birth);
+         System.out.println("Country: "+country);
+         System.out.println(" ");
+
+         builder.append("Contents of the JSON are: ");
+         builder.append("Owner name: " + login);
+         builder.append("Owner ID: " + id);
+         builder.append("Public repo: " + name);
+         
 
         } else {
           // if the request is not recognized at all
