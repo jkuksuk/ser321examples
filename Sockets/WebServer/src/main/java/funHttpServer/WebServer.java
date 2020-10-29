@@ -209,17 +209,20 @@ class WebServer {
           Integer result = num1 * num2;
 
           // Generate response
+
+          // TODO: Include error handling here with a correct error code and
+          // a response that makes sense
+          if (num1!=null&&num2!==null&&result!=null) { // success
           builder.append("HTTP/1.1 200 OK\n");
           builder.append("Content-Type: text/html; charset=utf-8\n");
           builder.append("\n");
           builder.append("Result is: " + result);
-
-          // TODO: Include error handling here with a correct error code and
-          // a response that makes sense
-          builder.append("HTTP/1.1 400 Bad Request\n");
+          } else { // failure
+            builder.append("HTTP/1.1 400 Bad Request\n");
           builder.append("Content-Type: text/html; charset=utf-8\n");
           builder.append("\n");
           builder.append("Please check your numbers and try again, sorry!");
+          }
 
         } else if (request.contains("github?")) {
           // pulls the query from the request and runs it with GitHub's REST API
