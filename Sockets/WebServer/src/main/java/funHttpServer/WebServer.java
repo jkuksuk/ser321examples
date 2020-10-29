@@ -216,6 +216,7 @@ class WebServer {
 
           // TODO: Include error handling here with a correct error code and
           // a response that makes sense
+          response.sendError("Bad Request. Please look carefully at what and how many numbers you entered and try again.", 400);
 
         } else if (request.contains("github?")) {
           // pulls the query from the request and runs it with GitHub's REST API
