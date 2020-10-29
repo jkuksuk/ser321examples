@@ -212,7 +212,7 @@ class WebServer {
 
           // TODO: Include error handling here with a correct error code and
           // a response that makes sense
-          if (num1!=null&&num2!==null&&result!=null) { // success
+          if (num1!=null&&num2!=null&&result!=null) { // success
           builder.append("HTTP/1.1 200 OK\n");
           builder.append("Content-Type: text/html; charset=utf-8\n");
           builder.append("\n");
